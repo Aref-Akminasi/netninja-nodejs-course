@@ -1,16 +1,24 @@
 // requests & responses
 const http = require('http');
+const fs = require('fs');
 
 const server = http.createServer((req, res) => {
   console.log(req.url, req.method);
 
   // set header content type
 
-  res.setHeader('Content-Type', 'text/plain');
+  res.setHeader('Content-Type', 'text/html');
 
-  res.write('hello world');
-
-  res.end();
+  // send an html file
+  fs.readFile('./views/index.html', (err, data) => {
+    if (err) {
+      console.log(err);
+      res.end(); //To end the request if there is an error instead of keeping the request hanging
+    } else {
+      //res.write(data);
+      res.end(data);
+    }
+  });
 });
 
 server.listen(3000, 'localhost', () => {
