@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/Aref-Akminasi/netninja-nodejs-course#readme",
   "dependencies": {
+    "express": "^4.18.2",
     "lodash": "^4.17.21"
   }
 }
